@@ -115,7 +115,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="book-now" class="btn-style">Book Now</button>
         </div>
     </main>
 
@@ -124,7 +124,7 @@
     <script>
     
 
-        // function for counting ticked amount
+        // function for counting ticket amount for + button 
         function inputAmount(id, amount) {
             let firstClassInput = document.getElementById(id).value;
             if (firstClassInput == '') {
@@ -142,7 +142,7 @@
 
         }
 
-
+         // function for counting ticket amount for - button
         function inputAmountMinus(id, amount) {
             let firstClassInput = document.getElementById(id).value;
             if (firstClassInput > 0) {
@@ -161,7 +161,7 @@
             }
         }
 
-
+        // calculates subtotal, tax also total
         function priceCalculation(amount) {
             let subTotalSt = document.getElementById("subtotal").innerText;
             let subTotalNum = parseFloat(subTotalSt);
