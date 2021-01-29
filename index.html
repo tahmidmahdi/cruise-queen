@@ -70,7 +70,7 @@
                 <div class="plus-minus-btn">
                     <p id="plus-first-class">+</p>
                     <p id="minus-first-class">-</p>
-                    
+
                 </div>
             </div>
 
@@ -122,6 +122,8 @@
     <!--Thank You-->
 
     <script>
+    
+
         // function for counting ticked amount
         function inputAmount(id, amount) {
             let firstClassInput = document.getElementById(id).value;
@@ -136,22 +138,27 @@
 
             // // counting subtotal 
             priceCalculation(amount);
-            
-            
+
+
         }
 
 
         function inputAmountMinus(id, amount) {
             let firstClassInput = document.getElementById(id).value;
-            if (firstClassInput == '') {
-                document.getElementById(id).value = "-1";
+            if (firstClassInput > 0) {
+                if (firstClassInput == '') {
+                    document.getElementById(id).value = "-1";
+                }
+                else {
+                    let firstClassInputNum = parseFloat(firstClassInput);
+                    firstClassInputNum = firstClassInputNum - 1;
+                    document.getElementById(id).value = firstClassInputNum;
+                }
+                priceCalculation(amount);
             }
-            else {
-                let firstClassInputNum = parseFloat(firstClassInput);
-                firstClassInputNum = firstClassInputNum - 1;
-                document.getElementById(id).value = firstClassInputNum;
+            else{
+                alert("VALUE CAN NOT BE NEGATIVE");
             }
-            priceCalculation(amount);
         }
 
 
@@ -172,9 +179,9 @@
         // + button for firstClass
         let plusFirstClass = document.getElementById("plus-first-class");
         plusFirstClass.addEventListener('click', function () {
-        
+
             inputAmount('first-class-input', 150);
-            
+
         })
 
 
@@ -189,9 +196,9 @@
         // + button for economy class
         let plusEconomyClass = document.getElementById("plus-economy-class");
         plusEconomyClass.addEventListener('click', function () {
-        
+
             inputAmount('economy-class-input', 100);
-            
+
         })
 
         // - button for economy class
