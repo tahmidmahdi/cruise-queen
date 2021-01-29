@@ -31,47 +31,60 @@
 
         <div class="booking-content">
             <h1>Cruise Queen</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book./p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book./p>
         </div>
 
 
         <div class="booking-form">
             <h3>Book Ocean Time</h3>
             <div class="input-group">
-                <label for="">Flying From</label>
-                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+                <label for="">Sailing From</label>
+                <input class="inp-style" type="text" name="" placeholder="Dhaka, Bangladesh">
             </div>
             <div class="input-group">
-                <label for="">Flying To</label>
+                <label for="">Sailing To</label>
                 <input class="inp-style" type="text" name="" placeholder="New York, United States">
             </div>
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">Departure</label>
-                    <input class="inp-style" type="date" name="">
+                        <input class="inp-style" type="date" name="">
                 </div>
                 <div class="input-group">
                     <label for="">Return</label>
                     <input class="inp-style" type="date" name="">
                 </div>
             </div>
+
+
+
+            <!-- first Class -->
+
             <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($150)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <input id="first-class-input" class="inp-style inp-width" type="number" name="" min="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <p>+ -</p>
+                    <p id="plus-first-class">+</p>
+                    <p id="minus-first-class">-</p>
+                    
                 </div>
             </div>
-            
+
+
+            <!-- economy class -->
+
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($100)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <input id="economy-class-input" class="inp-style inp-width" type="number" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span>+</span> <span>-</span> </p>
+                    <p id="plus-economy-class">+</p>
+                    <p id="minus-economy-class">-</p>
                 </div>
             </div>
             <div class="calculations">
@@ -80,7 +93,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$500</p>
+                        <p>$ <span id="subtotal">0</span></p>
                     </div>
                 </div>
 
@@ -89,7 +102,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p>$ <span id="tax">0</span> </p>
                     </div>
                 </div>
                 <hr>
@@ -98,7 +111,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p>$ <span id="total">0</span> </p>
                     </div>
                 </div>
             </div>
@@ -107,6 +120,90 @@
     </main>
 
     <!--Thank You-->
+
+    <script>
+        // function for counting ticked amount
+        function inputAmount(id, amount) {
+            let firstClassInput = document.getElementById(id).value;
+            if (firstClassInput == '') {
+                document.getElementById(id).value = "1";
+            }
+            else {
+                let firstClassInputNum = parseFloat(firstClassInput);
+                firstClassInputNum = firstClassInputNum + 1;
+                document.getElementById(id).value = firstClassInputNum;
+            }
+
+            // // counting subtotal 
+            priceCalculation(amount);
+            
+            
+        }
+
+
+        function inputAmountMinus(id, amount) {
+            let firstClassInput = document.getElementById(id).value;
+            if (firstClassInput == '') {
+                document.getElementById(id).value = "-1";
+            }
+            else {
+                let firstClassInputNum = parseFloat(firstClassInput);
+                firstClassInputNum = firstClassInputNum - 1;
+                document.getElementById(id).value = firstClassInputNum;
+            }
+            priceCalculation(amount);
+        }
+
+
+        function priceCalculation(amount) {
+            let subTotalSt = document.getElementById("subtotal").innerText;
+            let subTotalNum = parseFloat(subTotalSt);
+            let subTotal = subTotalNum + amount;
+            document.getElementById('subtotal').innerText = subTotal;
+            totalTax = subTotal / 10;
+            document.getElementById('tax').innerText = totalTax;
+            totalAmount = subTotal + totalTax;
+            document.getElementById('total').innerText = totalAmount;
+        }
+
+
+
+
+        // + button for firstClass
+        let plusFirstClass = document.getElementById("plus-first-class");
+        plusFirstClass.addEventListener('click', function () {
+        
+            inputAmount('first-class-input', 150);
+            
+        })
+
+
+
+        // - button for firstClass
+        let minusFirstClass = document.getElementById("minus-first-class");
+        minusFirstClass.addEventListener('click', function () {
+            inputAmountMinus('first-class-input', -150);
+        })
+
+
+        // + button for economy class
+        let plusEconomyClass = document.getElementById("plus-economy-class");
+        plusEconomyClass.addEventListener('click', function () {
+        
+            inputAmount('economy-class-input', 100);
+            
+        })
+
+        // - button for economy class
+        let minusEconomyClass = document.getElementById("minus-economy-class");
+        minusEconomyClass.addEventListener('click', function () {
+            inputAmountMinus('economy-class-input', -100);
+        })
+
+
+
+
+    </script>
 </body>
 
 </html>
