@@ -128,16 +128,16 @@
         function inputAmount(id, amount) {
             let ClassInput = document.getElementById(id).value;
             if (ClassInput == '') {
-                document.getElementById(id).value = "1";
+                document.getElementById(id).value = "1";         // validating input number; as the number begins with "" empty string. so i have assigned 1 instead of empty string
             }
             else {
                 let ClassInputNum = parseFloat(ClassInput);
-                ClassInputNum = ClassInputNum + 1;
+                ClassInputNum = ClassInputNum + 1;                      // if the number is not empty string then we should add 1 every time when the user press the button 
                 document.getElementById(id).value = ClassInputNum;
             }
 
             // // counting subtotal 
-            priceCalculation(amount);
+            priceCalculation(amount);       
 
 
         }
@@ -151,7 +151,7 @@
                 }
                 else {
                     let ClassInputNum = parseFloat(ClassInput);
-                    ClassInputNum = ClassInputNum - 1;
+                    ClassInputNum = ClassInputNum - 1;                       // it indicates we should reduce the value by -1 when we pressed - button 
                     document.getElementById(id).value = ClassInputNum;
                 }
                 priceCalculation(amount);
@@ -163,12 +163,14 @@
 
         // calculates subtotal, tax also total
         function priceCalculation(amount) {
-            let subTotalSt = document.getElementById("subtotal").innerText;
-            let subTotalNum = parseFloat(subTotalSt);
+            let subTotals = document.getElementById("subtotal").innerText;
+            let subTotalNum = parseFloat(subTotals);
             let subTotal = subTotalNum + amount;
             document.getElementById('subtotal').innerText = subTotal;
+
             totalTax = subTotal / 10;
             document.getElementById('tax').innerText = totalTax;
+            
             totalAmount = subTotal + totalTax;
             document.getElementById('total').innerText = totalAmount;
         }
@@ -207,6 +209,7 @@
             inputAmountMinus('economy-class-input', -100);
         })
 
+        // this function is for alert the buyer how much he has to pay 
         document.getElementById("book-now").addEventListener('click', function () {
             let bookNowTotal = document.getElementById("total").innerText;
 
