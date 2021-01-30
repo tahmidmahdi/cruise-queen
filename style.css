@@ -122,3 +122,6 @@ nav ul li a:hover, a.active{
     display: flex;
     justify-content: space-between;
 }
+.minus{
+    margin-left: 5px;
+}

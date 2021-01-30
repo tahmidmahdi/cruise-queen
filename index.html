@@ -69,7 +69,7 @@
                 </div>
                 <div class="plus-minus-btn">
                     <p id="plus-first-class">+</p>
-                    <p id="minus-first-class">-</p>
+                    <p class="minus" id="minus-first-class">-</p>
 
                 </div>
             </div>
@@ -84,7 +84,7 @@
                 </div>
                 <div class="plus-minus-btn">
                     <p id="plus-economy-class">+</p>
-                    <p id="minus-economy-class">-</p>
+                    <p class="minus" id="minus-economy-class">-</p>
                 </div>
             </div>
             <div class="calculations">
@@ -126,14 +126,14 @@
 
         // function for counting ticket amount for + button 
         function inputAmount(id, amount) {
-            let firstClassInput = document.getElementById(id).value;
-            if (firstClassInput == '') {
+            let ClassInput = document.getElementById(id).value;
+            if (ClassInput == '') {
                 document.getElementById(id).value = "1";
             }
             else {
-                let firstClassInputNum = parseFloat(firstClassInput);
-                firstClassInputNum = firstClassInputNum + 1;
-                document.getElementById(id).value = firstClassInputNum;
+                let ClassInputNum = parseFloat(ClassInput);
+                ClassInputNum = ClassInputNum + 1;
+                document.getElementById(id).value = ClassInputNum;
             }
 
             // // counting subtotal 
@@ -144,15 +144,15 @@
 
          // function for counting ticket amount for - button
         function inputAmountMinus(id, amount) {
-            let firstClassInput = document.getElementById(id).value;
-            if (firstClassInput > 0) {
-                if (firstClassInput == '') {
+            let ClassInput = document.getElementById(id).value;
+            if (ClassInput > 0) {
+                if (ClassInput == '') {
                     document.getElementById(id).value = "-1";
                 }
                 else {
-                    let firstClassInputNum = parseFloat(firstClassInput);
-                    firstClassInputNum = firstClassInputNum - 1;
-                    document.getElementById(id).value = firstClassInputNum;
+                    let ClassInputNum = parseFloat(ClassInput);
+                    ClassInputNum = ClassInputNum - 1;
+                    document.getElementById(id).value = ClassInputNum;
                 }
                 priceCalculation(amount);
             }
@@ -209,7 +209,7 @@
 
         document.getElementById("book-now").addEventListener('click', function () {
             let bookNowTotal = document.getElementById("total").innerText;
-            // alert("DEAR SIR, BEFORE CONFIRMING YOUR ORDERS I WOULD LIKE TO SAY THAT, YOU HAVE TO PAY INCLUDING TAX IS", bookNowTotal);
+
             alert('DEAR SIR, BEFORE PURCHASING TICKETS WE WOULD LIKE TO SAY THAT, YOUR TOTAL BILL INCLUDING TAX IS: ' + bookNowTotal);
         })
 
