@@ -157,7 +157,7 @@
                 priceCalculation(amount);
             }
             else{
-                alert("VALUE CAN NOT BE NEGATIVE");
+                window.alert("VALUE CAN NOT BE NEGATIVE");
             }
         }
 
@@ -205,6 +205,12 @@
         let minusEconomyClass = document.getElementById("minus-economy-class");
         minusEconomyClass.addEventListener('click', function () {
             inputAmountMinus('economy-class-input', -100);
+        })
+
+        document.getElementById("book-now").addEventListener('click', function () {
+            let bookNowTotal = document.getElementById("total").innerText;
+            // alert("DEAR SIR, BEFORE CONFIRMING YOUR ORDERS I WOULD LIKE TO SAY THAT, YOU HAVE TO PAY INCLUDING TAX IS", bookNowTotal);
+            alert('DEAR SIR, BEFORE PURCHASING TICKETS WE WOULD LIKE TO SAY THAT, YOUR TOTAL BILL INCLUDING TAX IS: ' + bookNowTotal);
         })
 
 
